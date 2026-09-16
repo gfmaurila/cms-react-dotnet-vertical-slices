@@ -807,3 +807,262 @@ Frontend build OK
 Testes OK
 README atualizado
 ```
+
+
+---
+
+# 22. GITIGNORE OBRIGATÓRIO
+
+No ato da geração, criar ou atualizar um `.gitignore` na raiz compatível com toda a solução .NET + React/Vite.
+
+Deve ignorar no mínimo:
+
+```text
+.NET:
+bin/
+obj/
+Debug/
+Release/
+artifacts/
+publish/
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+TestResults/
+coverage/
+*.log
+*.binlog
+
+React / Node / Vite:
+node_modules/
+dist/
+build/
+.vite/
+.cache/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+Ambientes / secrets:
+.env
+.env.*
+.env.dev
+.env.hml
+.env.prod
+frontend/.env.development
+frontend/.env.homologation
+frontend/.env.production
+```
+
+Manter versionados somente arquivos de exemplo sem secrets:
+
+```text
+.env.example
+frontend/.env.example
+```
+
+Os arquivos `package-lock.json`, `yarn.lock` ou `pnpm-lock.yaml` utilizados pelo projeto NÃO devem ser ignorados.
+
+Também ignorar certificados, chaves privadas, arquivos temporários e overrides locais do Docker.
+
+Nunca adicionar secrets reais ao Git.
+
+
+---
+
+# 23. TASKS, BACKLOG E EVOLUÇÃO DO PROJETO
+
+As pastas de tasks NÃO devem existir no template inicial. Elas devem ser criadas automaticamente durante a execução do `PROJECT.md`.
+
+Gerar:
+
+```text
+tasks/
+├── generated/
+│   ├── REQUIREMENTS.md
+│   ├── ARCHITECTURE_PLAN.md
+│   └── EXECUTION_PLAN.md
+│
+├── backlog/
+│   ├── TASK-001-dashboard-layout.md
+│   ├── TASK-002-admin-theme.md
+│   ├── TASK-003-home-layout.md
+│   ├── TASK-004-page-builder.md
+│   ├── TASK-005-media-library.md
+│   ├── TASK-006-menu-builder.md
+│   ├── TASK-007-seo.md
+│   └── TASK-008-audit-log.md
+│
+├── examples/
+│   ├── EXAMPLE-new-screen.md
+│   ├── EXAMPLE-new-crud.md
+│   ├── EXAMPLE-change-layout.md
+│   ├── EXAMPLE-new-permission.md
+│   ├── EXAMPLE-new-api.md
+│   └── EXAMPLE-new-feature.md
+│
+└── reports/
+    ├── TEST_REPORT.md
+    └── REVIEW_REPORT.md
+```
+
+## 23.1 Tasks generated
+
+Antes de implementar código, gerar:
+
+### REQUIREMENTS.md
+Consolidar requisitos funcionais, não funcionais, segurança, ambientes, APIs, frontend, banco, Docker e critérios de aceite.
+
+### ARCHITECTURE_PLAN.md
+Documentar solution .NET, dependências, Vertical Slices, Domain, CQRS, autenticação, autorização, banco, React, Docker e decisões arquiteturais.
+
+### EXECUTION_PLAN.md
+Dividir a implementação em fases e tasks executáveis, indicando dependências, ordem, validações, build e testes.
+
+## 23.2 Backlog futuro
+
+As tasks em `tasks/backlog` são exemplos de evolução futura e NÃO devem ser executadas durante a geração inicial, salvo se o usuário solicitar explicitamente.
+
+Cada task deve conter:
+
+```text
+ID
+Título
+Status
+Objetivo
+Contexto
+Frontend
+Backend
+API
+Domain
+Banco
+Permissões
+Layout/UX
+Responsividade
+Critérios de aceite
+Testes
+Dependências
+Arquivos afetados
+Resultado esperado
+```
+
+Status permitidos:
+
+```text
+PENDING
+IN_PROGRESS
+BLOCKED
+DONE
+```
+
+## 23.3 Backlog inicial obrigatório
+
+### TASK-001-dashboard-layout.md
+Evolução do Dashboard administrativo com cards, indicadores, atalhos, atividade recente e componentes reutilizáveis.
+
+### TASK-002-admin-theme.md
+Sistema de tema do Admin com identidade visual configurável, logo, aparência, sidebar e preferências de layout.
+
+### TASK-003-home-layout.md
+Evolução futura da Home institucional com Hero, Sobre, Serviços, Diferenciais, CTA, Posts e Contato.
+
+### TASK-004-page-builder.md
+Page Builder modular para páginas institucionais, permitindo composição futura de seções/blocos.
+
+### TASK-005-media-library.md
+Evolução da biblioteca de mídia com upload, filtros, preview, metadados, seleção e reutilização de arquivos.
+
+### TASK-006-menu-builder.md
+Editor visual de menus e submenus com ordenação e ativação/desativação.
+
+### TASK-007-seo.md
+Configurações de SEO para páginas/posts, meta title, description, canonical, Open Graph e sitemap.
+
+### TASK-008-audit-log.md
+Tela e backend para auditoria de operações administrativas relevantes.
+
+## 23.4 Templates de tasks
+
+Criar exemplos reutilizáveis para:
+
+- nova tela React;
+- novo CRUD completo;
+- alteração de layout;
+- nova permission;
+- nova API/endpoint;
+- nova feature transversal.
+
+O agente deverá copiar o template apropriado ao criar uma nova task, nunca alterar o exemplo original.
+
+## 23.5 Execução futura de uma task
+
+Quando receber:
+
+```text
+Execute tasks/backlog/TASK-XXX.md
+```
+
+o agente deverá:
+
+1. Ler PROJECT.md.
+2. Ler REQUIREMENTS.md e ARCHITECTURE_PLAN.md.
+3. Ler a task solicitada.
+4. Identificar dependências.
+5. Marcar como IN_PROGRESS.
+6. Implementar somente o escopo da task e dependências indispensáveis.
+7. Executar build.
+8. Executar testes.
+9. Corrigir erros.
+10. Atualizar TEST_REPORT.md.
+11. Atualizar REVIEW_REPORT.md quando aplicável.
+12. Marcar a task como DONE somente se os critérios de aceite forem atendidos.
+
+## 23.6 Regra para telas e layouts
+
+Tasks de UI devem especificar:
+
+```text
+Desktop
+Tablet
+Mobile
+Loading
+Empty state
+Error state
+Permissões
+Navegação
+Componentes reutilizáveis
+Integração real com API
+```
+
+Evitar dados hardcoded quando a funcionalidade possuir endpoint correspondente.
+
+## 23.7 Relatórios
+
+`TEST_REPORT.md` deve registrar:
+
+- data/hora da execução;
+- task/fase;
+- builds executados;
+- testes executados;
+- resultado;
+- erros encontrados;
+- correções;
+- pendências.
+
+`REVIEW_REPORT.md` deve registrar:
+
+- arquitetura;
+- segurança;
+- qualidade;
+- duplicações;
+- regras de Domain;
+- CQRS;
+- permissions;
+- frontend;
+- Docker;
+- problemas encontrados;
+- recomendações;
+- status final.

@@ -197,3 +197,39 @@ com a configuração final realmente gerada.
 ```
 
 O `PROJECT.md` é a fonte principal de requisitos.
+
+
+## Tasks e evolução futura
+
+Durante a execução do `PROJECT.md`, o agente também deverá criar uma estrutura de planejamento e evolução:
+
+```text
+tasks/
+├── generated/
+├── backlog/
+├── examples/
+└── reports/
+```
+
+O projeto inicial gera automaticamente os planos de requisitos, arquitetura e execução. O backlog contém exemplos de evoluções futuras de telas, layouts e funcionalidades, mas essas tasks **não devem ser executadas automaticamente** na primeira geração.
+
+Exemplos previstos:
+
+- evolução do Dashboard;
+- tema/layout do Admin;
+- novo layout da Home;
+- Page Builder;
+- Media Library;
+- Menu Builder;
+- SEO;
+- Audit Log.
+
+Também serão criados templates para nova tela, novo CRUD, mudança de layout, nova permission, nova API e nova feature.
+
+Depois da geração inicial, uma evolução poderá ser solicitada ao agente com:
+
+```text
+Execute tasks/backlog/TASK-003-home-layout.md
+```
+
+O agente deverá implementar, testar, atualizar os relatórios e somente então marcar a task como `DONE`.

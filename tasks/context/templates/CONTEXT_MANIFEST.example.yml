@@ -1,0 +1,22 @@
+task: EXAMPLE
+goal: "Describe the smallest deliverable"
+
+backend:
+  - backend/src/Cms.Api/Features/Example
+
+frontend:
+  - frontend/src/admin/features/example
+
+database:
+  - Example
+
+tests:
+  - backend/tests/**/Example
+
+exclude:
+  - frontend/src/site
+  - backend/src/Cms.Api/Features/Posts
+  - node_modules
+  - bin
+  - obj
+  - dist

@@ -1,132 +1,41 @@
-# ============================================================
-# .NET + React / Vite
-# ============================================================
-
-# ----------------------------
-# .NET / Visual Studio / Rider
-# ----------------------------
-[Bb]in/
-[Oo]bj/
-[Dd]ebug/
-[Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
-x64/
-x86/
-[Aa][Rr][Mm]/
-[Aa][Rr][Mm]64/
-artifacts/
-publish/
-
+# .NET
+**/bin/
+**/obj/
 .vs/
-.vscode/
-.idea/
 *.user
 *.suo
-*.userosscache
-*.sln.docstates
-*.rsuser
-*.DotSettings.user
-
-# .NET tooling / NuGet
-project.lock.json
-project.fragment.lock.json
-packages/
-*.nupkg
-*.snupkg
-.nuget/
-ScaffoldingReadMe.txt
-
-# Test / coverage
-[Tt]est[Rr]esult*/
 TestResults/
-CodeCoverage/
 coverage/
-coverage.*
-*.coverage
-*.coveragexml
-*.trx
-*.VisualState.xml
-TestResult.xml
-nunit-*.xml
 
-# Logs
-[Ll]og/
-[Ll]ogs/
+# React / Node
+**/node_modules/
+**/dist/
+**/.vite/
 *.log
-*.binlog
 
-# ----------------------------
-# React / Node / Vite
-# ----------------------------
-node_modules/
-dist/
-dist-ssr/
-build/
-.cache/
-.parcel-cache/
-.vite/
-.vite-cache/
-.eslintcache
+# IDE
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
 
-# Package manager caches/logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-.pnpm-store/
-
-# Keep lock files versioned
-# package-lock.json
-# yarn.lock
-# pnpm-lock.yaml
-
-# ----------------------------
-# Environment / secrets
-# ----------------------------
-.env
-.env.*
-!.env.example
-
-# React/Vite environment files generated per environment contain
-# deployment-specific values and must not be committed.
-frontend/.env.development
-frontend/.env.homologation
-frontend/.env.production
-frontend/.env.local
-frontend/.env.*.local
-!frontend/.env.example
-
-# Root Docker/environment configuration
-.env.dev
-.env.hml
-.env.prod
-!.env.example
-
-# ----------------------------
-# OS / temporary files
-# ----------------------------
+# OS
 .DS_Store
 Thumbs.db
-Desktop.ini
-~$*
-*~
+
+# Secrets / local environment
+.env
+.env.local
+.env.*.local
+.env.dev.local
+.env.hml.local
+.env.prod.local
+
+# Backend local secrets
+**/appsettings.Local.json
+**/appsettings.*.Local.json
+
+# Temporary
 *.tmp
-*.temp
+*.bak
 *.swp
-*.swo
-
-# ----------------------------
-# Docker local overrides
-# ----------------------------
-docker-compose.override.yml
-compose.override.yml
-
-# ----------------------------
-# Certificates / local secrets
-# ----------------------------
-*.pfx
-*.p12
-*.key
-*.pem
-secrets/
